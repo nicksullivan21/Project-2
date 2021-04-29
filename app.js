@@ -93,12 +93,12 @@ d3.csv("../Data/PPIvsInterestRate.csv").then(function(data) {
   // Append axes titles
   chartGroup.append("text")
   .attr("transform", `translate(${width / 2}, ${height + margin.top + 20})`)
-    .classed("dow-text text", true)
+    .classed("PPI-text text", true)
     .text("Property Price Index - Weighted Average (Aus)");
 
   chartGroup.append("text")
   .attr("transform", `translate(${width / 2}, ${height + margin.top + 37})`)
-    .classed("smurf-text text", true)
+    .classed("CashRate-text text", true)
     .text("Target Cash Rate (%)");
 }).catch(function(error) {
   console.log(error);
