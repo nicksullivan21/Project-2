@@ -1,4 +1,4 @@
-// Chart Params
+// Line Chart Params
 var svgWidth = 960;
 var svgHeight = 500;
 
