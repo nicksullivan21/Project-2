@@ -18,18 +18,18 @@ My idea for this project was to collect, analyse and visualise data on residenti
 4. An interactive map with markers on Australian capital cities, their size proportionate to that city's property price index at the end of the 2020 financial year.
 
 ## Tools Used
-Pandas
-Javascript
-HTML
-CSS
-Plotly
-d3
-Google Charts
-PostgreSQL
+1. Pandas
+2. Javascript
+3. HTML
+4. CSS
+5. Plotly
+6. d3
+7. Google Charts
+8. PostgreSQL
 
 ## Data Sources
-Property Price Index - ABS
-Interest Rates - RBA/Quandl
-Migration Data - ABS
-Unemployment Data - ABS
+1. Property Price Index - ABS
+2. Interest Rates - RBA/Quandl
+3. Migration Data - ABS
+4. Unemployment Data - ABS
 
