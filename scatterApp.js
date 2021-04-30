@@ -62,8 +62,8 @@ d3.csv("Data/PPIvsUnemployment.csv").then(function(data) {
       .attr("cx", function (d) { return x(+d.UnemploymentRate); } )
       .attr("cy", function (d) { return y(+d.PPI); } )
       .attr("r", 7)
-      .style("fill", "#69b3a2")
-      .style("opacity", 0.3)
+      .style("fill", "blue")
+      .style("opacity", 0.5)
       .style("stroke", "white")
   
   // Add a tooltip
@@ -110,8 +110,8 @@ d3.csv("Data/PPIvsUnemployment.csv").then(function(data) {
           .attr("cx", function (d) { return x(+d.UnemploymentRate); } )
           .attr("cy", function (d) { return y(+d.PPI); } )
           .attr("r", 7)
-          .style("fill", "#69b3a2")
-          .style("opacity", 0.3)
+          .style("fill", "blue")
+          .style("opacity", 0.5)
           .style("stroke", "white")
   }
 

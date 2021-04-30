@@ -61,7 +61,7 @@ d3.csv("../Data/PPIvsInterestRate.csv").then(function(data) {
   // Add y1-axis to the left side of the display
   chartGroup.append("g")
     // Define the color of the axis text
-    .classed("green", true)
+    .classed("red", true)
     .call(leftAxis);
 
   // Add y2-axis to the right side of the display
@@ -84,7 +84,7 @@ d3.csv("../Data/PPIvsInterestRate.csv").then(function(data) {
   chartGroup.append("path")
     .data([data])
     .attr("d", line1)
-    .classed("line green", true);
+    .classed("line red", true);
 
   // Append a path for line2
   chartGroup.append("path")
