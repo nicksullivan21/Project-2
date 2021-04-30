@@ -6,7 +6,7 @@ var margin = {top: 20, right: 20, bottom: 50, left: 70},
 var x = d3.scaleLinear().range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
 
-var svg = d3.select("#my_dataviz").append("svg")
+var svg = d3.select("#scatter").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -38,7 +38,7 @@ d3.csv("Data/PPIvsUnemployment.csv").then(function(data) {
     .text("Unemployment Rate (%)");
 
   // Add y axis
- svg.append("g")
+  svg.append("g")
    .call(d3.axisLeft(y));
 
   // Add y axis label
@@ -50,36 +50,6 @@ d3.csv("Data/PPIvsUnemployment.csv").then(function(data) {
     .attr("dy", "1em")
     .text("Property Price Index")
 
-  // Add a tooltip
-  var tooltip = d3.select("#my_dataviz")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "10px")
-
-  // Function that changes the tooltip when the user hovers over a point
-    var mouseover = function(d) {
-      tooltip
-        .style("opacity", 1)
-    }
-
-    var mousemove = function(d) {
-      tooltip
-        .html("Financial Year: " + d.FY)
-        .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        .style("top", (d3.mouse(this)[1]) + "px")
-    }
-
-    var mouseleave = function(d) {
-      tooltip
-        .transition()
-        .duration(200)
-        .style("opacity", 0)
-    }
   // List of groups
   var allGroup = d3.map(data, function(d){return(d.State)}).keys()
 
@@ -95,9 +65,25 @@ d3.csv("Data/PPIvsUnemployment.csv").then(function(data) {
       .style("fill", "#69b3a2")
       .style("opacity", 0.3)
       .style("stroke", "white")
-    .on("mouseover", mouseover)
-    .on("mousemove", mousemove)
-    .on("mouseleave", mouseleave)
+  
+  // Add a tooltip
+    var toolTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([80, -60])
+    .html(function(d) {
+      return (`FY${d.FY}<br>Unemployment Rate: ${d.UnemploymentRate}%<br>Property Price Index: ${d.PPI}`);
+    });
+
+    dots.call(toolTip);
+
+    dots.on("click", function(data) {
+      toolTip.show(data, this);
+    })
+
+      .on("mouseout", function(data, index) {
+        toolTip.hide(data);
+      })
+
 
   // Add options to button
   d3.select("#selectButton")
@@ -126,7 +112,7 @@ d3.csv("Data/PPIvsUnemployment.csv").then(function(data) {
           .attr("r", 7)
           .style("fill", "#69b3a2")
           .style("opacity", 0.3)
-          .style("stroke", "white")    
+          .style("stroke", "white")
   }
 
   // When the button is changed, run the updateChart function
@@ -136,4 +122,4 @@ d3.csv("Data/PPIvsUnemployment.csv").then(function(data) {
       // run the updateChart function with this selected option
       update(selectedOption)
 })
-})
+});
